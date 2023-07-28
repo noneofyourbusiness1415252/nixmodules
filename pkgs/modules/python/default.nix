@@ -92,9 +92,10 @@ let
     buildCommand = ''
       mkdir -p $out/bin
       makeWrapper ${python}/bin/python3 $out/bin/python3 \
-        --set LD_LIBRARY_PATH "${python-ld-library-path}" \
+        --set LD_LIBRARY_PATH ${python-ld-library-path} \
+        --prefix LD_LIBRARY_PATH : \$PYTHON_LD_LIBRARY_PATH \
         --prefix PYTHONPATH : "${pypkgs.setuptools}/${python.sitePackages}"
-    
+
       ln -s $out/bin/python3 $out/bin/python
       ln -s $out/bin/python3 $out/bin/python${community-version}
     '';
