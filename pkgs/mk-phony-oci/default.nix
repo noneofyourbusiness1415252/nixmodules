@@ -4,7 +4,7 @@
 , coreutils
 , closureInfo
 , gnutar
-, pigz
+, gzip
 , ztoc-rs
 }:
 
@@ -26,8 +26,8 @@ derivation {
       coreutils
       coreutils
       gnutar
-      pigz
       ztoc-rs
+      gzip
     ];
     diskClosureInfo = closureInfo { rootPaths = [ module ]; };
   };

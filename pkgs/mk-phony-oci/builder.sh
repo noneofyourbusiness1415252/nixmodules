@@ -12,7 +12,7 @@ tar -Pcpf ${out}/layer.tar --hard-dereference --sort=name --mtime="1970-01-01T00
   --owner=0 --group=0 --verbatim-files-from --files-from "${env[diskClosureInfo]}"/store-paths
 
 DIFFID=$(sha256sum ${out}/layer.tar | cut -f -1 -d ' ')
-pigz ${out}/layer.tar
+gzip ${out}/layer.tar
 LAYER_DIGEST=$(sha256sum ${out}/layer.tar.gz | cut -f -1 -d ' ')
 cat ${out}/layer.tar.gz | ztoc > ${out}/ztoc
 ZTOC_DIGEST=$(sha256sum ${out}/ztoc | cut -f -1 -d ' ')
